@@ -91,12 +91,12 @@
 		57D2B38923EC6B6400B44343 /* NYTTopStories */ = {
 			isa = PBXGroup;
 			children = (
+				57D2B3C123EC87AF00B44343 /* Network Services */,
 				57D2B3BB23EC85FE00B44343 /* Models */,
 				57D2B3B623EC711900B44343 /* Views */,
 				57D2B3AF23EC6E1E00B44343 /* Controllers */,
 				57D2B3AE23EC6E0600B44343 /* Supporting Files */,
 				57D2B39823EC6B6600B44343 /* Info.plist */,
-				57D2B3BC23EC862100B44343 /* NYTTopStoriesAPIClient.swift */,
 			);
 			path = NYTTopStories;
 			sourceTree = "<group>";
@@ -146,6 +146,14 @@
 				57D2B3B923EC850A00B44343 /* TopStory.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		57D2B3C123EC87AF00B44343 /* Network Services */ = {
+			isa = PBXGroup;
+			children = (
+				57D2B3BC23EC862100B44343 /* NYTTopStoriesAPIClient.swift */,
+			);
+			path = "Network Services";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
