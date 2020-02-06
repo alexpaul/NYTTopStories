@@ -17,6 +17,7 @@
 		57D2B3B323EC6E7000B44343 /* SavedArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3B223EC6E7000B44343 /* SavedArticleViewController.swift */; };
 		57D2B3B523EC6E8B00B44343 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3B423EC6E8B00B44343 /* SettingsViewController.swift */; };
 		57D2B3B823EC714500B44343 /* NewsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3B723EC714500B44343 /* NewsFeedView.swift */; };
+		57D2B3BA23EC850A00B44343 /* TopStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3B923EC850A00B44343 /* TopStory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		57D2B3B223EC6E7000B44343 /* SavedArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticleViewController.swift; sourceTree = "<group>"; };
 		57D2B3B423EC6E8B00B44343 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57D2B3B723EC714500B44343 /* NewsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedView.swift; sourceTree = "<group>"; };
+		57D2B3B923EC850A00B44343 /* TopStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				57D2B3AF23EC6E1E00B44343 /* Controllers */,
 				57D2B3AE23EC6E0600B44343 /* Supporting Files */,
 				57D2B39823EC6B6600B44343 /* Info.plist */,
+				57D2B3B923EC850A00B44343 /* TopStory.swift */,
 			);
 			path = NYTTopStories;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				57D2B3AD23EC6C3100B44343 /* TopStoriesTabController.swift in Sources */,
 				57D2B38D23EC6B6400B44343 /* SceneDelegate.swift in Sources */,
 				57D2B3B823EC714500B44343 /* NewsFeedView.swift in Sources */,
+				57D2B3BA23EC850A00B44343 /* TopStory.swift in Sources */,
 				57D2B3B123EC6E5300B44343 /* NewsFeedViewController.swift in Sources */,
 				57D2B3B523EC6E8B00B44343 /* SettingsViewController.swift in Sources */,
 			);
