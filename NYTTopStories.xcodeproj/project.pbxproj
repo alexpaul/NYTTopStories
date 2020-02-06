@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		57D2B3B523EC6E8B00B44343 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3B423EC6E8B00B44343 /* SettingsViewController.swift */; };
 		57D2B3B823EC714500B44343 /* NewsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3B723EC714500B44343 /* NewsFeedView.swift */; };
 		57D2B3BA23EC850A00B44343 /* TopStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3B923EC850A00B44343 /* TopStory.swift */; };
+		57D2B3BD23EC862100B44343 /* NYTTopStoriesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3BC23EC862100B44343 /* NYTTopStoriesAPIClient.swift */; };
+		57D2B3C023EC868400B44343 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 57D2B3BF23EC868400B44343 /* ImageKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,7 @@
 		57D2B3B423EC6E8B00B44343 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57D2B3B723EC714500B44343 /* NewsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedView.swift; sourceTree = "<group>"; };
 		57D2B3B923EC850A00B44343 /* TopStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStory.swift; sourceTree = "<group>"; };
+		57D2B3BC23EC862100B44343 /* NYTTopStoriesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTTopStoriesAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57D2B3C023EC868400B44343 /* ImageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,11 +91,12 @@
 		57D2B38923EC6B6400B44343 /* NYTTopStories */ = {
 			isa = PBXGroup;
 			children = (
+				57D2B3BB23EC85FE00B44343 /* Models */,
 				57D2B3B623EC711900B44343 /* Views */,
 				57D2B3AF23EC6E1E00B44343 /* Controllers */,
 				57D2B3AE23EC6E0600B44343 /* Supporting Files */,
 				57D2B39823EC6B6600B44343 /* Info.plist */,
-				57D2B3B923EC850A00B44343 /* TopStory.swift */,
+				57D2B3BC23EC862100B44343 /* NYTTopStoriesAPIClient.swift */,
 			);
 			path = NYTTopStories;
 			sourceTree = "<group>";
@@ -135,6 +140,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		57D2B3BB23EC85FE00B44343 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				57D2B3B923EC850A00B44343 /* TopStory.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,6 +164,9 @@
 			dependencies = (
 			);
 			name = NYTTopStories;
+			packageProductDependencies = (
+				57D2B3BF23EC868400B44343 /* ImageKit */,
+			);
 			productName = NYTTopStories;
 			productReference = 57D2B38723EC6B6400B44343 /* NYTTopStories.app */;
 			productType = "com.apple.product-type.application";
@@ -201,6 +217,9 @@
 				Base,
 			);
 			mainGroup = 57D2B37E23EC6B6400B44343;
+			packageReferences = (
+				57D2B3BE23EC868400B44343 /* XCRemoteSwiftPackageReference "ImageKit" */,
+			);
 			productRefGroup = 57D2B38823EC6B6400B44343 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -240,6 +259,7 @@
 				57D2B3AD23EC6C3100B44343 /* TopStoriesTabController.swift in Sources */,
 				57D2B38D23EC6B6400B44343 /* SceneDelegate.swift in Sources */,
 				57D2B3B823EC714500B44343 /* NewsFeedView.swift in Sources */,
+				57D2B3BD23EC862100B44343 /* NYTTopStoriesAPIClient.swift in Sources */,
 				57D2B3BA23EC850A00B44343 /* TopStory.swift in Sources */,
 				57D2B3B123EC6E5300B44343 /* NewsFeedViewController.swift in Sources */,
 				57D2B3B523EC6E8B00B44343 /* SettingsViewController.swift in Sources */,
@@ -501,6 +521,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		57D2B3BE23EC868400B44343 /* XCRemoteSwiftPackageReference "ImageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexpaul/ImageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		57D2B3BF23EC868400B44343 /* ImageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57D2B3BE23EC868400B44343 /* XCRemoteSwiftPackageReference "ImageKit" */;
+			productName = ImageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 57D2B37F23EC6B6400B44343 /* Project object */;
 }
