@@ -89,9 +89,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-# Luba is not allowed
-Luba.swift 
-
 Config.swift
 
 .DS_Store
