@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5764191123EDB6F500D864FF /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764191023EDB6F500D864FF /* NewsCell.swift */; };
 		57D2B38B23EC6B6400B44343 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B38A23EC6B6400B44343 /* AppDelegate.swift */; };
 		57D2B38D23EC6B6400B44343 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B38C23EC6B6400B44343 /* SceneDelegate.swift */; };
 		57D2B39423EC6B6600B44343 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D2B39323EC6B6600B44343 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5764191023EDB6F500D864FF /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		57D2B38723EC6B6400B44343 /* NYTTopStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTTopStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D2B38A23EC6B6400B44343 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57D2B38C23EC6B6400B44343 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				57D2B3B723EC714500B44343 /* NewsFeedView.swift */,
+				5764191023EDB6F500D864FF /* NewsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				57D2B3C323EC8BF500B44343 /* Config.swift in Sources */,
 				57D2B3B123EC6E5300B44343 /* NewsFeedViewController.swift in Sources */,
 				57D2B3B523EC6E8B00B44343 /* SettingsViewController.swift in Sources */,
+				5764191123EDB6F500D864FF /* NewsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

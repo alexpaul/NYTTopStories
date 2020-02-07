@@ -25,7 +25,7 @@ class NewsFeedViewController: UIViewController {
     newsFeedView.collectionView.delegate = self
     
     // register a collection view cell
-    newsFeedView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "articleCell")
+    newsFeedView.collectionView.register(NewsCell.self, forCellWithReuseIdentifier: "articleCell")
     
     fetchStories()
   }
@@ -61,7 +61,7 @@ extension NewsFeedViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let maxSize: CGSize = UIScreen.main.bounds.size
     let itemWidth: CGFloat = maxSize.width
-    let itemHeight: CGFloat = maxSize.height * 0.30 // 30%
+    let itemHeight: CGFloat = maxSize.height * 0.20 // 30%
     return CGSize(width: itemWidth, height: itemHeight)
   }
 }
