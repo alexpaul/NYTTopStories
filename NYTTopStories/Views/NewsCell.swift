@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageKit // getImage()
 
 class NewsCell: UICollectionViewCell {
   
@@ -59,7 +60,7 @@ class NewsCell: UICollectionViewCell {
     NSLayoutConstraint.activate([
       newsImageView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
       newsImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-      newsImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.30),
+      newsImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.50),
       newsImageView.widthAnchor.constraint(equalTo: newsImageView.heightAnchor)
     ])
   }
@@ -83,4 +84,27 @@ class NewsCell: UICollectionViewCell {
       abstractHeadline.topAnchor.constraint(equalTo: articleTitle.bottomAnchor, constant: 8)
     ])
   }
+  
+  public func configureCell(with article: Article) {
+    articleTitle.text = article.title
+    abstractHeadline.text = article.abstract
+    // image formats
+    /*
+     superJumbo 2048 X 1365
+     thumbLarge 150 x 150
+    */
+    newsImageView.getImage(with: article.getArticleImageURL(for: .thumbLarge)) { [weak self] (result) in
+      switch result {
+      case .failure:
+        DispatchQueue.main.async {
+          self?.newsImageView.image = UIImage(systemName: "exclamationmark-octagon")
+        }
+      case .success(let image):
+        DispatchQueue.main.async {
+          self?.newsImageView.image = image
+        }
+      }
+    }
+  }
 }
+

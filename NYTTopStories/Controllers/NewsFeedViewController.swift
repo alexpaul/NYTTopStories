@@ -12,6 +12,15 @@ class NewsFeedViewController: UIViewController {
   
   private let newsFeedView = NewsFeedView()
   
+  // data for our collection view
+  private var newsArticles = [Article]() {
+    didSet {
+      DispatchQueue.main.async {
+        self.newsFeedView.collectionView.reloadData()
+      }
+    }
+  }
+  
   override func loadView() {
     view = newsFeedView
   }
@@ -31,12 +40,12 @@ class NewsFeedViewController: UIViewController {
   }
   
   private func fetchStories(for section: String = "Technology") {
-    NYTTopStoriesAPIClient.fetchTopStories(for: section) { (result) in
+    NYTTopStoriesAPIClient.fetchTopStories(for: section) { [weak self] (result) in
       switch result {
       case .failure(let appError):
         print("error fetching stories: \(appError)")
       case .success(let articles):
-        print("found \(articles.count)")
+        self?.newsArticles = articles
       }
     }
   }
@@ -44,12 +53,16 @@ class NewsFeedViewController: UIViewController {
 
 extension NewsFeedViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 50
+    return newsArticles.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "articleCell", for: indexPath)
-    cell.backgroundColor = .white
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "articleCell", for: indexPath) as? NewsCell else {
+      fatalError("could not downcast to NewsCell")
+    }
+    let article = newsArticles[indexPath.row]
+    cell.configureCell(with: article)
+    cell.backgroundColor = .systemBackground
     return cell
   }
 }
@@ -63,5 +76,13 @@ extension NewsFeedViewController: UICollectionViewDelegateFlowLayout {
     let itemWidth: CGFloat = maxSize.width
     let itemHeight: CGFloat = maxSize.height * 0.20 // 30%
     return CGSize(width: itemWidth, height: itemHeight)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let article = newsArticles[indexPath.row]
+    let articleDVC = ArticleDetailViewController()
+    // TODO: after assessement we will be using initializers as dependency injection mechanisms
+    articleDVC.article = article
+    navigationController?.pushViewController(articleDVC, animated: true)
   }
 }
