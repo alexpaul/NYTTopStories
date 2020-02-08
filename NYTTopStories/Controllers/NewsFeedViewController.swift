@@ -22,6 +22,7 @@ class NewsFeedViewController: UIViewController {
     didSet {
       DispatchQueue.main.async {
         self.newsFeedView.collectionView.reloadData()
+        self.navigationItem.title = (self.newsArticles.first?.section.capitalized ?? " ") + " News"
       }
     }
   }
