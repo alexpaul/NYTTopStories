@@ -7,10 +7,10 @@ App review to demonstrate the following: collection view, custom delegation, per
 - [ ] User defaults 
 - [ ] Search
 - [x] Subclass UITabBarController
-- [ ] FileManager and documents directory 
-- [ ] Custom delegation 
+- [x] FileManager and documents directory 
+- [x] Custom delegation 
 - [x] Programmatic UI 
-- [ ] Segueing view controllers in code 
+- [x] Segueing view controllers in code 
 - [ ] Animations 
 - [ ] Gestures
 - [x] Unit test
