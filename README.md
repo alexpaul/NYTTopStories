@@ -17,7 +17,7 @@ App review to demonstrate the following: collection view, custom delegation, per
 
 ## Running this project 
 
-In order to run this project you will need an API key to access the New York Times Top Stories API. Once you've registered and acquired an API key, do the following: 
+In order to run this project you will need an API key to access the [New York Times Top Stories API](https://developer.nytimes.com/docs/top-stories-product/1/overview). Once you've registered and acquired an API key, do the following: 
 
 1. Clone this repo
 2. Open the Xcode project and navigate to **Supporting Files** folder delete the Config.swift file and create a new Config.swift file
