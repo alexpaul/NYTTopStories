@@ -15,4 +15,18 @@ App review to demonstrate the following: collection view, custom delegation, per
 - [ ] Gestures
 - [x] Unit test
 
+## Running this project 
+
+In order to run this project you will need an API key to access the New York Times Top Stories API. Once you've registered and acquired an API key, so the following: 
+
+1. Clone this repo
+2. Open the Xcode project and navigate to **Supporting Files** folder delete the Config.swift file and create a new Config.swift file
+3. Open the newly created Config.swift file and enter the following code below: 
+
+```swift 
+struct Config {
+  static let apiKey = "YOUR API KEY FOR THE NEW YORK TIMES TOP STORIES API GOES HERE"
+}
+```
+
 ![news-feed](Assets/news-feed.png)
