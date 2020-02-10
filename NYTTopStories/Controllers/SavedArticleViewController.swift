@@ -92,6 +92,16 @@ extension SavedArticleViewController: UICollectionViewDelegateFlowLayout {
     return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
   }
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    // programmatically a segue
+    let article = savedArticles[indexPath.row]
+    let detailVC = ArticleDetailViewController()
+    // TODO: using initializer as opposed to injecting individual properties
+    detailVC.article = article
+    detailVC.dataPersistence = dataPersistence
+    navigationController?.pushViewController(detailVC, animated: true)
+  }
+  
 }
 
 // step 5: setting up data persistence and its delegate
@@ -102,7 +112,7 @@ extension SavedArticleViewController: DataPersistenceDelegate {
   }
   
   func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
-    print("ites was deleted")
+    fetchSavedArticles()
   }
 }
 
@@ -117,10 +127,22 @@ extension SavedArticleViewController: SavedArticleCellDelegate {
     let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
     let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { alertAction in
-      // TODO: write a delete helper function
+      self.deleteArticle(article)
     }
     alertController.addAction(cancelAction)
     alertController.addAction(deleteAction)
     present(alertController, animated: true)
+  }
+  
+  private func deleteArticle(_ article: Article) {
+    guard let index = savedArticles.firstIndex(of: article) else {
+      return
+    }
+    do {
+      // deletes from documents directory
+      try dataPersistence.deleteItem(at: index)
+    } catch {
+      print("error deleting article: \(error)")
+    }
   }
 }

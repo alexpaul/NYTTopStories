@@ -27,6 +27,12 @@ class NewsFeedViewController: UIViewController {
     }
   }
   
+  private var sectionName = "Technology" {
+    didSet {
+      // TODO:
+    }
+  }
+  
   override func loadView() {
     view = newsFeedView
   }
@@ -41,21 +47,41 @@ class NewsFeedViewController: UIViewController {
     
     // register a collection view cell
     newsFeedView.collectionView.register(NewsCell.self, forCellWithReuseIdentifier: "articleCell")
-    
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(true)
     fetchStories()
   }
   
   private func fetchStories(for section: String = "Technology") {
-    NYTTopStoriesAPIClient.fetchTopStories(for: section) { [weak self] (result) in
-      switch result {
-      case .failure(let appError):
-        print("error fetching stories: \(appError)")
-      case .success(let articles):
-        self?.newsArticles = articles
+    
+    // retrieve section name from UserDefaults
+    if let sectionName = UserDefaults.standard.object(forKey: UserKey.sectionName) as? String {
+      if sectionName != self.sectionName { // business == tech
+        // we are looking at a new section
+        // make a new query
+        queryAPI(for: sectionName)
+        self.sectionName = sectionName
       }
+    } else {
+      // use the default section name
+      queryAPI(for: sectionName)
     }
   }
+  
+  private func queryAPI(for section: String) {
+    NYTTopStoriesAPIClient.fetchTopStories(for: section) { [weak self] (result) in
+       switch result {
+       case .failure(let appError):
+         print("error fetching stories: \(appError)")
+       case .success(let articles):
+         self?.newsArticles = articles
+       }
+     }
+  }
 }
+
 
 extension NewsFeedViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -8,23 +8,49 @@
 
 import UIKit
 
+struct UserKey {
+  static let sectionName = "News Section"
+}
+
 class SettingsViewController: UIViewController {
+  
+  private let settingsView = SettingsView()
+  
+  // date for picker view
+  private let sections = ["Arts", "Automobiles", "Books", "Business", "Fashion", "Food", "Health", "Insider", "Magazine", "Movies", "NYRegion", "Obituaries", "Opinion", "Politics", "RealeEstate", "Science", "Sports", "SundayReview", "Technology", "Theater", "T-Magazine", "Travel", "Upshot", "US", "World"]
+  
+  override func loadView() {
+    view = settingsView
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .green
+    view.backgroundColor = .systemGroupedBackground
     
+    // setup picker view
+    settingsView.pickerView.dataSource = self
+    settingsView.pickerView.delegate = self
+  }
+}
+
+extension SettingsViewController: UIPickerViewDataSource {
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
   }
   
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return sections.count
+  }
+}
+
+extension SettingsViewController: UIPickerViewDelegate {
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return sections[row] // accessing each individual string in the sections array
+  }
   
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    // store the current selected news section in user defaults
+    let sectionName = sections[row]
+    UserDefaults.standard.set(sectionName, forKey: UserKey.sectionName)
+  }
 }
