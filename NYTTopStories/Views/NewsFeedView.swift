@@ -8,11 +8,6 @@
 
 import UIKit
 
-struct Person {
-  
-}
-
-
 class NewsFeedView: UIView {
   
   public lazy var searchBar: UISearchBar = {

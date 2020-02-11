@@ -16,7 +16,10 @@ class ArticleDetailViewController: UIViewController {
   public var dataPersistence: DataPersistence<Article>!
   
   private let detailView = ArticleDetailView()
-    
+  
+  // ADDITION: keep track of the bookmark
+  private var bookmarkBarButton: UIBarButtonItem!
+  
   override func loadView() {
     view = detailView
   }
@@ -24,10 +27,12 @@ class ArticleDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
-    updateUI()
     
     // adding a UIBarButtonItem to the right side to the navigation bar's title
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bookmark"), style: .plain, target: self, action: #selector(saveArticleButtonPressed(_:)))
+    bookmarkBarButton = UIBarButtonItem(image: UIImage(systemName: "bookmark"), style: .plain, target: self, action: #selector(saveArticleButtonPressed(_:)))
+    navigationItem.rightBarButtonItem = bookmarkBarButton
+    
+    updateUI()
   }
   
   private func updateUI() {
@@ -36,6 +41,7 @@ class ArticleDetailViewController: UIViewController {
     guard let article = article else {
       fatalError("did not load an article")
     }
+    updateBookmarkState(article)
     navigationItem.title = article.title
     detailView.abstractHeadline.text = article.abstract
     detailView.newsImageView.getImage(with: article.getArticleImageURL(for: .superJumbo)) { [weak self] (result) in
@@ -54,13 +60,35 @@ class ArticleDetailViewController: UIViewController {
   
   @objc func saveArticleButtonPressed(_ sender: UIBarButtonItem) {
     guard let article = article else { return }
-    do {
-      // save to documents directory
-      try dataPersistence.createItem(article)
-    } catch {
-      print("error saving article: \(error)")
+    // ADDITION: check for duplicates
+    if dataPersistence.hasItemBeenSaved(article) {
+      if let index = try? dataPersistence.loadItems().firstIndex(of: article) {
+        do {
+          try dataPersistence.deleteItem(at: index)
+        } catch {
+          print("error deleting article: \(error)")
+        }
+      }
+    } else {
+      do {
+        // save to documents directory
+        try dataPersistence.createItem(article)
+      } catch {
+        print("error saving article: \(error)")
+      }
     }
     
+    // ADDITION:
+    // update bookmark state
+    updateBookmarkState(article)
   }
   
+  // ADDITION
+  private func updateBookmarkState(_ article: Article) {
+    if dataPersistence.hasItemBeenSaved(article) {
+      bookmarkBarButton.image = UIImage(systemName: "bookmark.fill")
+    } else {
+      bookmarkBarButton.image = UIImage(systemName: "bookmark")
+    }
+  }
 }

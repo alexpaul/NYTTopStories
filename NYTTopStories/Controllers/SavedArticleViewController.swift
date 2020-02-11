@@ -69,7 +69,7 @@ extension SavedArticleViewController: UICollectionViewDataSource {
       fatalError("could not downcast to a SavedArticleCell")
     }
     let savedArticle = savedArticles[indexPath.row]
-    cell.backgroundColor = .white
+    cell.backgroundColor = .systemBackground
     cell.configreCell(for: savedArticle)
     // step 1: registering as the delegate object
     cell.delegate = self

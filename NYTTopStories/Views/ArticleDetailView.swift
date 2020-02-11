@@ -18,6 +18,7 @@ class ArticleDetailView: UIView {
     let iv = UIImageView()
     iv.image = UIImage(systemName: "photo")
     iv.contentMode = .scaleAspectFill
+    iv.clipsToBounds = true
     return iv
   }()
   

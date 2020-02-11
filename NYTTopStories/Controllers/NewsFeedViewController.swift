@@ -17,6 +17,8 @@ class NewsFeedViewController: UIViewController {
   // since we need an instance passed to the ArticleDetailViewController we declare a dataPersistence here
   public var dataPersistence: DataPersistence<Article>!
   
+  public var userPreference: UserPreference!
+  
   // data for our collection view
   private var newsArticles = [Article]() {
     didSet {
@@ -26,13 +28,7 @@ class NewsFeedViewController: UIViewController {
       }
     }
   }
-  
-  private var sectionName = "Technology" {
-    didSet {
-      // TODO:
-    }
-  }
-  
+    
   override func loadView() {
     view = newsFeedView
   }
@@ -47,41 +43,25 @@ class NewsFeedViewController: UIViewController {
     
     // register a collection view cell
     newsFeedView.collectionView.register(NewsCell.self, forCellWithReuseIdentifier: "articleCell")
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(true)
-    fetchStories()
-  }
-  
-  private func fetchStories(for section: String = "Technology") {
     
-    // retrieve section name from UserDefaults
-    if let sectionName = UserDefaults.standard.object(forKey: UserKey.sectionName) as? String {
-      if sectionName != self.sectionName { // business == tech
-        // we are looking at a new section
-        // make a new query
-        queryAPI(for: sectionName)
-        self.sectionName = sectionName
+    // setup search bar
+    newsFeedView.searchBar.delegate = self
+    
+    let sectionName = userPreference.getSectionName() ?? "Technology"
+    fetchStories(sectionName)
+  }
+  
+  private func fetchStories(_ section: String) {
+    NYTTopStoriesAPIClient.fetchTopStories(for: section) { [weak self] (result) in
+      switch result {
+      case .failure(let appError):
+        print("fetching stories error: \(appError)")
+      case .success(let articles):
+        self?.newsArticles = articles
       }
-    } else {
-      // use the default section name
-      queryAPI(for: sectionName)
     }
   }
-  
-  private func queryAPI(for section: String) {
-    NYTTopStoriesAPIClient.fetchTopStories(for: section) { [weak self] (result) in
-       switch result {
-       case .failure(let appError):
-         print("error fetching stories: \(appError)")
-       case .success(let articles):
-         self?.newsArticles = articles
-       }
-     }
-  }
 }
-
 
 extension NewsFeedViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -119,5 +99,31 @@ extension NewsFeedViewController: UICollectionViewDelegateFlowLayout {
     // step 3: setting up data persistence and its delegate
     articleDVC.dataPersistence = dataPersistence
     navigationController?.pushViewController(articleDVC, animated: true)
+  }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if newsFeedView.searchBar.isFirstResponder {
+      newsFeedView.searchBar.resignFirstResponder()
+    }
+  }
+}
+
+extension NewsFeedViewController: UISearchBarDelegate {
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    guard !searchText.isEmpty else {
+      // if text is empty reload all the articles
+      let sectionName = userPreference.getSectionName() ?? "Technology"
+      fetchStories(sectionName)
+      return
+    }
+    // filter articles based on searchText
+    newsArticles = newsArticles.filter { $0.title.lowercased().contains(searchText.lowercased()) }
+  }
+}
+
+// ADDITION: conforming to UserPreferenceDelegate
+extension NewsFeedViewController: UserPreferenceDelegate {
+  func didChangeNewsSection(_ userPreference: UserPreference, sectionName: String) {
+    fetchStories(sectionName)
   }
 }
