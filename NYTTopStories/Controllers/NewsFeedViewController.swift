@@ -28,6 +28,8 @@ class NewsFeedViewController: UIViewController {
       }
     }
   }
+  
+  private var masterArticleList = [Article]()
     
   override func loadView() {
     view = newsFeedView
@@ -58,6 +60,7 @@ class NewsFeedViewController: UIViewController {
         print("fetching stories error: \(appError)")
       case .success(let articles):
         self?.newsArticles = articles
+        self?.masterArticleList = articles
       }
     }
   }
@@ -117,7 +120,7 @@ extension NewsFeedViewController: UISearchBarDelegate {
       return
     }
     // filter articles based on searchText
-    newsArticles = newsArticles.filter { $0.title.lowercased().contains(searchText.lowercased()) }
+    newsArticles = masterArticleList.filter { $0.title.lowercased().contains(searchText.lowercased()) }
   }
 }
 
