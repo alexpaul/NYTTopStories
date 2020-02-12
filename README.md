@@ -31,7 +31,7 @@ struct Config {
 
 4. Run the project 
 
-## Encapsulatinng our view controller properties, using dependency injection with designated initializers (Programmatically)
+## Encapsulating our view controller properties, using dependency injection with designated initializers (Programmatically)
 
 #### Creating a designated initializer programmatically
 
@@ -57,7 +57,7 @@ required init?(coder: NSCoder) {
 let newsFeedVC = NewsFeedViewController(dataPersistence, userPreference: userPreference)
 ```
 
-## Encapsulatinng our view controller properties, using dependency injection with designated initializers (Storyboard)
+## Encapsulating our view controller properties, using dependency injection with designated initializers (Storyboard)
 
 #### Creating a designated initializer for Storyboard injection
 ```swift 
