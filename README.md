@@ -59,7 +59,7 @@ let newsFeedVC = NewsFeedViewController(dataPersistence, userPreference: userPre
 
 ## Encapsulatinng our view controller properties, using dependency injection with designated initializers (Storyboard)
 
-#### Creating a designated initializer for Storybaord injection
+#### Creating a designated initializer for Storyboard injection
 ```swift 
 init?(coder: NSCoder, image: UIImage) {
   self.image = image
