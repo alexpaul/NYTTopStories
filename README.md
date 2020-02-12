@@ -31,7 +31,7 @@ struct Config {
 
 4. Run the project 
 
-## Encapsulatinng our view controller properties, using dependency injection with designated initializers
+## Encapsulatinng our view controller properties, using dependency injection with designated initializers (Programmatically)
 
 ```swift 
 private var dataPersistence: DataPersistence<Article>
@@ -47,6 +47,30 @@ init(_ dataPersistence: DataPersistence<Article>, userPreference: UserPreference
 required init?(coder: NSCoder) {
   fatalError("init(coder:) has not been implemented")
 }
+```
+
+## Encapsulatinng our view controller properties, using dependency injection with designated initializers (Storyboard)
+
+#### Creating a designated initializer for Storybaord injection
+```swift 
+init?(coder: NSCoder, image: UIImage) {
+  self.image = image
+  super.init(coder: coder)
+}
+
+required init?(coder: NSCoder) {
+  fatalError("init(coder:) has not been implemented")
+}
+```
+
+#### Using dependency injection via Storyboard
+```swift 
+let storyboard = UIStoryboard(name: "ZoomImage", bundle: nil)
+  let zoomImageVC = storyboard.instantiateViewController(identifier: "ZoomImageViewController", creator: { (coder)  in
+    return ZoomImageViewController(coder: coder, image: self.newsDetailView.newImageView.image ?? UIImage(systemName: "photo")!)
+  })
+  zoomImageVC.modalTransitionStyle = .crossDissolve
+  present(zoomImageVC, animated: true)
 ```
 
 ![news-feed](Assets/news-feed.png)
