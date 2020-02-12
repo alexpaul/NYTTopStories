@@ -33,6 +33,8 @@ struct Config {
 
 ## Encapsulatinng our view controller properties, using dependency injection with designated initializers (Programmatically)
 
+#### Creating a designated initializer programmatically
+
 ```swift 
 private var dataPersistence: DataPersistence<Article>
 private var userPreference: UserPreference
@@ -47,6 +49,12 @@ init(_ dataPersistence: DataPersistence<Article>, userPreference: UserPreference
 required init?(coder: NSCoder) {
   fatalError("init(coder:) has not been implemented")
 }
+```
+
+#### Using dependency injection on a view controller programmatically
+
+```swift 
+let newsFeedVC = NewsFeedViewController(dataPersistence, userPreference: userPreference)
 ```
 
 ## Encapsulatinng our view controller properties, using dependency injection with designated initializers (Storyboard)
