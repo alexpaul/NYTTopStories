@@ -31,4 +31,22 @@ struct Config {
 
 4. Run the project 
 
+## Encapsulatinng our view controller properties, using dependency injection with designated initializers
+
+```swift 
+private var dataPersistence: DataPersistence<Article>
+private var userPreference: UserPreference
+
+init(_ dataPersistence: DataPersistence<Article>, userPreference: UserPreference) {
+  self.userPreference = userPreference
+  self.userPreference.delegate = self
+  self.dataPersistence = dataPersistence
+  super.init(nibName: nil, bundle: nil)
+}
+
+required init?(coder: NSCoder) {
+  fatalError("init(coder:) has not been implemented")
+}
+```
+
 ![news-feed](Assets/news-feed.png)
