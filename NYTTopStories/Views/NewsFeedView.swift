@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Added Dependency injection to view controllers
+
 class NewsFeedView: UIView {
   
   public lazy var searchBar: UISearchBar = {
