@@ -11,14 +11,27 @@ import DataPersistence
 
 class ArticleDetailViewController: UIViewController {
   
-  public var article: Article?
-  
-  public var dataPersistence: DataPersistence<Article>!
-  
+  // properties
   private let detailView = ArticleDetailView()
+
+  private var article: Article
+  
+  private var dataPersistence: DataPersistence<Article>
+  
   
   // ADDITION: keep track of the bookmark
   private var bookmarkBarButton: UIBarButtonItem!
+  
+  // initializers
+  init(_ dataPersistence: DataPersistence<Article>, article: Article) {
+    self.dataPersistence = dataPersistence
+    self.article = article
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override func loadView() {
     view = detailView
@@ -36,11 +49,6 @@ class ArticleDetailViewController: UIViewController {
   }
   
   private func updateUI() {
-    // TODO: refactor and setup in ArticleDetailView
-    // e.g detailView.configureView(for article: article)
-    guard let article = article else {
-      fatalError("did not load an article")
-    }
     updateBookmarkState(article)
     navigationItem.title = article.title
     detailView.abstractHeadline.text = article.abstract
@@ -59,8 +67,6 @@ class ArticleDetailViewController: UIViewController {
   }
   
   @objc func saveArticleButtonPressed(_ sender: UIBarButtonItem) {
-    guard let article = article else { return }
-    // ADDITION: check for duplicates
     if dataPersistence.hasItemBeenSaved(article) {
       if let index = try? dataPersistence.loadItems().firstIndex(of: article) {
         do {

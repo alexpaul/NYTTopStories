@@ -17,23 +17,14 @@ class TopStoriesTabController: UITabBarController {
   private var userPreference = UserPreference()
   
   private lazy var newsFeedVC: NewsFeedViewController = {
-    let viewController = NewsFeedViewController()
+    let viewController = NewsFeedViewController(dataPersistence, userPreference: userPreference)
     viewController.tabBarItem = UITabBarItem(title: "News Feed", image: UIImage(systemName: "eyeglasses"), tag: 0)
-    viewController.dataPersistence = dataPersistence
-    
-    // ADDITION: injecting userPreference into newsFeedVC
-    viewController.userPreference = userPreference
-    // ADDITION: setting the newsFeedVC as the delegate object for UserPreference (it will now listen for changes done in the SettingsViewController picker view on UserDefaults)
-    viewController.userPreference.delegate = viewController
     return viewController
   }()
   
   private lazy var savedArticlesVC: SavedArticleViewController = {
-    let viewController = SavedArticleViewController()
-    viewController.dataPersistence = dataPersistence
-    
+    let viewController = SavedArticleViewController(dataPersistence)
     // step 6: setting up data persistence and its delegate
-    viewController.dataPersistence.delegate = viewController
     viewController.tabBarItem = UITabBarItem(title: "Saved Articles", image: UIImage(systemName: "folder"), tag: 1)
     return viewController
   }()
