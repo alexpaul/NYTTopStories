@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Zoom Image View Controller-->
+        <scene sceneID="9aR-zv-hEs">
+            <objects>
+                <viewController storyboardIdentifier="ZoomImageViewController" id="LHu-Qd-bND" customClass="ZoomImageViewController" customModule="NYTTopStories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fog-i5-xFC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HDv-Op-yQe">
+                                <rect key="frame" x="0.0" y="20" width="414" height="856"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLe-IK-6Ac" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="856"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="31A-Xl-1p5">
+                                                <rect key="frame" x="0.0" y="-17" width="414" height="896"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="31A-Xl-1p5" firstAttribute="leading" secondItem="WLe-IK-6Ac" secondAttribute="leading" id="40L-bR-NlR"/>
+                                            <constraint firstAttribute="trailing" secondItem="31A-Xl-1p5" secondAttribute="trailing" id="IQr-vM-Y4s"/>
+                                            <constraint firstAttribute="bottom" secondItem="31A-Xl-1p5" secondAttribute="bottom" constant="-23" id="Lhy-I9-w1Y"/>
+                                            <constraint firstItem="31A-Xl-1p5" firstAttribute="top" secondItem="WLe-IK-6Ac" secondAttribute="top" constant="-17" id="SSC-nH-MnN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="WLe-IK-6Ac" firstAttribute="leading" secondItem="HDv-Op-yQe" secondAttribute="leading" id="5Mx-Du-2v9"/>
+                                    <constraint firstItem="WLe-IK-6Ac" firstAttribute="height" secondItem="HDv-Op-yQe" secondAttribute="height" id="95J-pS-R2x"/>
+                                    <constraint firstItem="WLe-IK-6Ac" firstAttribute="top" secondItem="HDv-Op-yQe" secondAttribute="top" id="IJQ-fh-V88"/>
+                                    <constraint firstAttribute="bottom" secondItem="WLe-IK-6Ac" secondAttribute="bottom" id="LHB-sn-9GL"/>
+                                    <constraint firstItem="WLe-IK-6Ac" firstAttribute="width" secondItem="HDv-Op-yQe" secondAttribute="width" id="YL6-Ua-t3w"/>
+                                    <constraint firstAttribute="trailing" secondItem="WLe-IK-6Ac" secondAttribute="trailing" id="dHH-3v-rgg"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="9Hd-Rp-kUV"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="fC5-ob-1W9"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="HDv-Op-yQe" firstAttribute="leading" secondItem="cLU-Ug-5l0" secondAttribute="leading" id="EYa-go-zA4"/>
+                            <constraint firstItem="HDv-Op-yQe" firstAttribute="trailing" secondItem="cLU-Ug-5l0" secondAttribute="trailing" id="R7X-sM-eL9"/>
+                            <constraint firstAttribute="bottom" secondItem="HDv-Op-yQe" secondAttribute="bottom" constant="20" symbolic="YES" id="ryE-nk-Ebs"/>
+                            <constraint firstItem="HDv-Op-yQe" firstAttribute="top" secondItem="Fog-i5-xFC" secondAttribute="top" constant="20" symbolic="YES" id="tJL-S6-AyY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cLU-Ug-5l0"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="31A-Xl-1p5" id="vi0-z4-Lkl"/>
+                        <outlet property="scrollView" destination="HDv-Op-yQe" id="4oP-l7-1Ve"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Jp-8T-2b4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-668.11594202898561" y="192.85714285714286"/>
+        </scene>
+    </scenes>
+</document>

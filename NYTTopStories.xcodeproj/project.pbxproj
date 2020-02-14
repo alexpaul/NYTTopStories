@@ -29,6 +29,8 @@
 		57D2B3BD23EC862100B44343 /* NYTTopStoriesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3BC23EC862100B44343 /* NYTTopStoriesAPIClient.swift */; };
 		57D2B3C023EC868400B44343 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 57D2B3BF23EC868400B44343 /* ImageKit */; };
 		57D2B3C323EC8BF500B44343 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2B3C223EC8BF500B44343 /* Config.swift */; };
+		57D86D5A23F6F11D0080AA51 /* ZoomImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57D86D5923F6F11D0080AA51 /* ZoomImage.storyboard */; };
+		57D86D5C23F6F1490080AA51 /* ZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D86D5B23F6F1490080AA51 /* ZoomImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		57D2B3B923EC850A00B44343 /* TopStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStory.swift; sourceTree = "<group>"; };
 		57D2B3BC23EC862100B44343 /* NYTTopStoriesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTTopStoriesAPIClient.swift; sourceTree = "<group>"; };
 		57D2B3C223EC8BF500B44343 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		57D86D5923F6F11D0080AA51 /* ZoomImage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZoomImage.storyboard; sourceTree = "<group>"; };
+		57D86D5B23F6F1490080AA51 /* ZoomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,7 @@
 				57D2B38A23EC6B6400B44343 /* AppDelegate.swift */,
 				57D2B3C223EC8BF500B44343 /* Config.swift */,
 				57D2B38C23EC6B6400B44343 /* SceneDelegate.swift */,
+				57D86D5923F6F11D0080AA51 /* ZoomImage.storyboard */,
 				57D2B39323EC6B6600B44343 /* Assets.xcassets */,
 				57D2B39523EC6B6600B44343 /* LaunchScreen.storyboard */,
 			);
@@ -148,6 +153,7 @@
 				5764191223EDCB6800D864FF /* ArticleDetailViewController.swift */,
 				57D2B3B223EC6E7000B44343 /* SavedArticleViewController.swift */,
 				57D2B3B423EC6E8B00B44343 /* SettingsViewController.swift */,
+				57D86D5B23F6F1490080AA51 /* ZoomImageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57D86D5A23F6F11D0080AA51 /* ZoomImage.storyboard in Resources */,
 				57D2B39723EC6B6600B44343 /* LaunchScreen.storyboard in Resources */,
 				57D2B39423EC6B6600B44343 /* Assets.xcassets in Resources */,
 			);
@@ -305,6 +312,7 @@
 				57D2B3BA23EC850A00B44343 /* TopStory.swift in Sources */,
 				57D2B3C323EC8BF500B44343 /* Config.swift in Sources */,
 				57D2B3B123EC6E5300B44343 /* NewsFeedViewController.swift in Sources */,
+				57D86D5C23F6F1490080AA51 /* ZoomImageViewController.swift in Sources */,
 				57D2B3B523EC6E8B00B44343 /* SettingsViewController.swift in Sources */,
 				5764191123EDB6F500D864FF /* NewsCell.swift in Sources */,
 			);
