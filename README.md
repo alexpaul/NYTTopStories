@@ -74,11 +74,11 @@ required init?(coder: NSCoder) {
 #### Using dependency injection via Storyboard
 ```swift 
 let storyboard = UIStoryboard(name: "ZoomImage", bundle: nil)
-  let zoomImageVC = storyboard.instantiateViewController(identifier: "ZoomImageViewController", creator: { (coder)  in
-    return ZoomImageViewController(coder: coder, image: self.newsDetailView.newImageView.image ?? UIImage(systemName: "photo")!)
-  })
-  zoomImageVC.modalTransitionStyle = .crossDissolve
-  present(zoomImageVC, animated: true)
+let zoomImageVC = storyboard.instantiateViewController(identifier: "ZoomImageViewController", creator: { (coder)  in
+  return ZoomImageViewController(coder: coder, image: self.newsDetailView.newImageView.image ?? UIImage(systemName: "photo")!)
+})
+zoomImageVC.modalTransitionStyle = .crossDissolve
+present(zoomImageVC, animated: true)
 ```
 
 ![news-feed](Assets/news-feed.png)
