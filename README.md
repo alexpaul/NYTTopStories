@@ -73,9 +73,10 @@ required init?(coder: NSCoder) {
 
 #### Using dependency injection via Storyboard
 ```swift 
+let image = newsDetailView.newImageView.image ?? UIImage(systemName: "photo")!
 let storyboard = UIStoryboard(name: "ZoomImage", bundle: nil)
 let zoomImageVC = storyboard.instantiateViewController(identifier: "ZoomImageViewController", creator: { (coder)  in
-  return ZoomImageViewController(coder: coder, image: self.newsDetailView.newImageView.image ?? UIImage(systemName: "photo")!)
+  return ZoomImageViewController(coder: coder, image: image)
 })
 zoomImageVC.modalTransitionStyle = .crossDissolve
 present(zoomImageVC, animated: true)
